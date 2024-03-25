@@ -24,14 +24,6 @@ class_of_column2 <- class(etf1$Date)
 class_of_column3 <- class(data$Date)
 ```
 
-now delete the unnecessary columns for price of gas
-```{r}
-columns_to_delete <- c(3,4,5,6,7,8,9,10,11)
-
-# Delete specific columns using indexing
-data <- data[, -columns_to_delete]
-```
-
 now inner join by the date
 ```{r}
 data$date <- parse_date_time(data$Date, orders = "my")
@@ -54,16 +46,16 @@ final <- inner_join(result, sandp, by = "date")
 ```
 
 ```{r}
-#Renaming column names
-final <- final %>% rename(Gas.Price = U.S..All.Grades.All.Formulations.Retail.Gasoline.Prices..Dollars.per.Gallon., Crude.Price = Global.Price.of.Bent.Crude.Oil, Etf1.High = High.x, Eft1.Low = Low.x, Etf1.Close = Close.x, Etf1.Adj.Close = Adj.Close.x, Etf1.Volume = Volume.x, Etf2.High = High.y, Eft2.Low = Low.y, Etf2.Close = Close.y, Etf2.Adj.Close = Adj.Close.y, Etf2.Volume = Volume.y, Crude.High = High.x.x, Crude.Low = Low.x.x, Crude.Close = Close.x.x, Crude.Adj.Close = Adj.Close.x.x, Crude.Volume = Volume.x.x, SP.High = High.y.y, SP.Low = Low.y.y, SP.Close = Close.y.y, SP.Adj.Close = Adj.Close.y.y, SP.Volume = Volume.y.y, Etf1.Open = Open.x, Etf2.Open = Open.y, Crude.Open = Open.x.x, SP.Open = Open.y.y)
-
-#Dropping redundant columns
-final <- subset(final, select = -c(Crude.Price))
+final <- final %>% rename(Gas.Price = U.S..All.Grades.All.Formulations.Retail.Gasoline.Prices..Dollars.per.Gallon., Etf1.High = High.x, Eft1.Low = Low.x, Etf1.Close = Close.x, Etf1.Adj.Close = Adj.Close.x, Etf1.Volume = Volume.x, Etf2.High = High.y, Eft2.Low = Low.y, Etf2.Close = Close.y, Etf2.Adj.Close = Adj.Close.y, Etf2.Volume = Volume.y, Crude.High = High.x.x, Crude.Low = Low.x.x, Crude.Close = Close.x.x, Crude.Adj.Close = Adj.Close.x.x, Crude.Volume = Volume.x.x, SP.High = High.y.y, SP.Low = Low.y.y, SP.Close = Close.y.y, SP.Adj.Close = Adj.Close.y.y, SP.Volume = Volume.y.y, Etf1.Open = Open.x, Etf2.Open = Open.y, Crude.Open = Open.x.x, SP.Open = Open.y.y)
 ```
 
 ```{r}
-#Save output CSV
 write.csv(final, "final_data.csv")
+```
+
+
+```{r}
+final
 ```
 
 
