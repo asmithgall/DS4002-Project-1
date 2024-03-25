@@ -19,7 +19,7 @@ library(lubridate)
 
 
 ```{r}
-#read in excel spreadsheets
+#read in excel spreadsheets (EDIT FILEPATHS)
 gas <- read_xls("/Users/alexsmithgall/downloads/EMM_EPM0_PTE_NUS_DPGm.xls", sheet = 2)
 unemploy <- read_xls("/Users/alexsmithgall/downloads/UNRATE.xls")
 cpi <- read_xls("/Users/alexsmithgall/downloads/CPIAUCSL-2.xls")
